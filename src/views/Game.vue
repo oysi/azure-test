@@ -31,8 +31,8 @@
 		methods: {
 			async fetchData() {
 				try {
-					// const res = await fetch(`https://oysi-server.azurewebsites.net/game/${this.$route.params.code}`);
-					const res = await fetch(`http://localhost:8080/game/${this.$route.params.code}`);
+					const res = await fetch(`https://oysi-server.azurewebsites.net/game/${this.$route.params.code}`);
+					// const res = await fetch(`http://localhost:8080/game/${this.$route.params.code}`);
 					const data = await res.json();
 					console.log("data", data);
 					// const response = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json");
