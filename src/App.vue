@@ -17,8 +17,6 @@
 		</nav>
 	</div>
 	</header> -->
-	
-	Hello :)
 
 	<RouterView />
 </template>
