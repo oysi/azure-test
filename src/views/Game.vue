@@ -37,12 +37,16 @@
 					console.log("data", data);
 					
 					// connect to users
-					for (let userID of data.users) {
-						const conn = this.peer.connect(userID);
-						
-						conn.on("open", () => {
-							conn.send("hi!");
-						});
+					for (let targetUserID of data.users) {
+						if (targetUserID !== userID) {
+							console.log("attempting to connect to ", targetUserID);
+							
+							const conn = this.peer.connect(targetUserID);
+							
+							conn.on("open", () => {
+								conn.send("hi!");
+							});
+						}
 					}
 					
 					// connection events
