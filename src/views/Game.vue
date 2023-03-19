@@ -18,6 +18,7 @@
 	export default {
 		data() {
 			return {
+				userID: userID,
 				peer: new Peer(userID, {
 					host: "oysi-server.azurewebsites.net",
 					port: 8080,
@@ -108,6 +109,11 @@
 <template>
 	<div>
 		<div>
+			<div>
+				<span>Your user id:</span>
+				<span>&nbsp;</span>
+				<span>{{ userID }}</span>
+			</div>
 			<div>Share this game!</div>
 			<div>
 				<span>https://azure.oysi.tv/game/</span>
