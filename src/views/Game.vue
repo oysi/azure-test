@@ -11,9 +11,9 @@
 		<div style="padding-top: 3rem;">
 			Hello
 		</div>
-		<div>
+		<div style="">
 			<div v-for="row in board">
-				<span v-for="node in row" :style="node.styleObject">
+				<span v-for="node in row" :style="node.style">
 				</span>
 			</div>
 		</div>
@@ -43,17 +43,25 @@
 						if (char === ";") {
 							board.push([]);
 						} else {
-							board[board.length - 1].push({
-								char: char,
-								styleObject: {
-									display: "inline-block",
-									position: "relative",
-									width: "16px",
-									height: "16px",
-									background: "orange",
-									marginRight: "0.25rem",
-								},
-							});
+							const node = {};
+							
+							node.char = char;
+							node.style = {};
+							
+							node.style.display = "inline-block";
+							node.style.position = "relative";
+							node.style.width = "16px";
+							node.style.height = "16px";
+							node.style.background = "orange";
+							node.style.marginRight = "0.25rem";
+							
+							if (char === "0") {
+								node.style.background = "white";
+							} else if (char === "1") {
+								node.style.background = "grey";
+							}
+							
+							board[board.length - 1].push(node);
 						}
 					}
 					
