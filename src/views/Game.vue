@@ -19,7 +19,7 @@
 		data() {
 			return {
 				peer: new Peer(userID, {
-					host: "https://oysi-server.azurewebsites.net",
+					host: "oysi-server.azurewebsites.net",
 					port: 8080,
 					path: "/peerjs/myapp",
 				}),
