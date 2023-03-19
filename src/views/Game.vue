@@ -24,6 +24,7 @@
 					path: "/peerjs/myapp",
 				}),
 				board: [],
+				connections: [],
 			};
 		},
 		methods: {
@@ -32,7 +33,30 @@
 					const res = await fetch(`https://oysi-server.azurewebsites.net/game/${this.$route.params.code}?userID=${userID}`);
 					// const res = await fetch(`http://localhost:8080/game/${this.$route.params.code}?userID=${userID}`);
 					const data = await res.json();
+					
 					console.log("data", data);
+					
+					// connect to users
+					for (let userID of data.users) {
+						const conn = this.peer.connect(userID);
+						
+						conn.on("open", () => {
+							conn.send("hi!");
+						});
+					}
+					
+					// connection events
+					this.peer.on("connection", conn => {
+						conn.on("data", data => {
+							console.log("data", data);
+						});
+						conn.on("open", () => {
+							console.log("open");
+							conn.send("hello!");
+						});
+					});
+					
+					
 					// const response = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json");
 					// this.data = await response.json();
 					
